@@ -230,6 +230,14 @@ extern "C" {
 
 
 /*** Application Instance 0 Configuration ***/
+/*
+I2C driver model constants used by the application:
+*/
+#define APP_DRV_I2C_INDEX   			    0
+#define APP_PERPH_I2C_INDEX 			    I2C_ID_4
+
+#define APP_DATABUFF_SIZE_BYTES          (APP_I2C_DRV_BYTE_COUNT)
+#define APP_DATABUFF_SIZE_DWORDS         ((APP_I2C_DRV_BYTE_COUNT)/4)
 
 //DOM-IGNORE-BEGIN
 #ifdef __cplusplus

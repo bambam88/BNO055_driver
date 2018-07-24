@@ -58,6 +58,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include <stdlib.h>
 #include "system_config.h"
 #include "system_definitions.h"
+#include "driver/i2c/drv_i2c.h"
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility
@@ -72,6 +73,18 @@ extern "C" {
 // Section: Type Definitions
 // *****************************************************************************
 // *****************************************************************************
+// *****************************************************************************
+/* I2C States
+*/
+typedef enum
+{
+    APP_I2C_START,	
+    APP_I2C_TRANSMIT,		
+    APP_I2C_DONE,
+    APP_I2C_READ_FROM_ADDR,
+    APP_I2C_READ_DATA_BYTES,
+    APP_I2C_ERROR,
+} APP_I2C_STATES;
 
 // *****************************************************************************
 /* Application states
@@ -114,6 +127,11 @@ typedef struct
     APP_STATES state;
 
     /* TODO: Define any additional data used by the application. */
+    /* I2C Driver variables  */
+    DRV_HANDLE                              handleI2C0;
+	APP_I2C_STATES		i2cStates;
+    DRV_I2C_BUFFER_HANDLE                   I2CBufferHandle;
+    DRV_I2C_BUFFER_EVENT                    I2CBufferEvent;
 
 } APP_DATA;
 

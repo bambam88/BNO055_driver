@@ -5,7 +5,7 @@
     <SystemStartScript dnOrder="1"/>
   </DisplayManager>
   <General>
-    <HarmonyPath dnOrder="0" path="../../../../../microchip/harmony/v2_06"/>
+    <HarmonyPath dnOrder="0" path="../../../../../Users/juan.y/microchip/harmony/v2_06"/>
     <Processor dnOrder="1" name="PIC32MX795F512L"/>
     <Board dnOrder="2" name=" "/>
     <ForceOptimization dnOrder="3" flag="true"/>
@@ -155,12 +155,12 @@
       <Template dnOrder="1">
         <Name dnOrder="0">system_config.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/app/system_config/PIC32MX795</Path>
-        <Checksum dnOrder="2">B786BE35B6BC24752D0A451BC010F719</Checksum>
+        <Checksum dnOrder="2">C8B5A9DB09DD2B35F3E814923ADC7896</Checksum>
       </Template>
       <Template dnOrder="2">
         <Name dnOrder="0">drv_i2c_static_buffer_model.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/PIC32MX795/framework/driver/i2c/src</Path>
-        <Checksum dnOrder="2">7C9BF93C843C001A15592B714A58BA44</Checksum>
+        <Checksum dnOrder="2">6C6B199E2F7C6ACDBB335E6988A11EBB</Checksum>
       </Template>
       <Template dnOrder="3">
         <Name dnOrder="0">sys_devcon.c</Name>
@@ -220,7 +220,7 @@
       <Template dnOrder="14">
         <Name dnOrder="0">system_interrupt.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/PIC32MX795</Path>
-        <Checksum dnOrder="2">96932942588B5A774CF77188E62B494E</Checksum>
+        <Checksum dnOrder="2">7EDDE38AA8FF854FEF2DE0778F0F2878</Checksum>
       </Template>
       <Template dnOrder="15">
         <Name dnOrder="0">drv_spi_static.c</Name>
@@ -240,6 +240,7 @@
       <Template dnOrder="18">
         <Name dnOrder="0">main.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app</Path>
+        <Checksum dnOrder="2">81A51474D8A80D41AD749DEAE4C1A7A3</Checksum>
       </Template>
       <Template dnOrder="19">
         <Name dnOrder="0">bsp.h</Name>
@@ -259,6 +260,8 @@
       <Template dnOrder="22">
         <Name dnOrder="0">app.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app</Path>
+        <Checksum dnOrder="2">E95E0002611D0B416789C5069E1D18D6</Checksum>
+        <ProjectFileChecksum dnOrder="3">BFFB2574B094756AAF958662A7C4B64B</ProjectFileChecksum>
       </Template>
       <Template dnOrder="23">
         <Name dnOrder="0">drv_spi_static_ebm_tasks.c</Name>
@@ -278,6 +281,8 @@
       <Template dnOrder="26">
         <Name dnOrder="0">app.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/app</Path>
+        <Checksum dnOrder="2">92603BDD404D503525C710147E5C3933</Checksum>
+        <ProjectFileChecksum dnOrder="3">7C2E545A34DEAE75F9C3140AB5689845</ProjectFileChecksum>
       </Template>
       <Template dnOrder="27">
         <Name dnOrder="0">drv_spi_mapping.c</Name>
@@ -287,16 +292,16 @@
     </Templates>
     <CompilerItems dnOrder="2">
       <C32 dnOrder="0">
-        <Include dnOrder="0" value="/Users/juan.y/Documents/GitHub/BNO055_driver/EXP16/BNO055_EXP16/firmware/src"/>
-        <Include dnOrder="1" value="/Users/juan.y/Documents/GitHub/BNO055_driver/EXP16/BNO055_EXP16/firmware/src/system_config/PIC32MX795"/>
-        <Include dnOrder="2" value="/Users/juan.y/Documents/GitHub/BNO055_driver/EXP16/BNO055_EXP16/firmware/src/PIC32MX795"/>
+        <Include dnOrder="0" value="/Projects/GAV/BNO055_driver/EXP16/BNO055_EXP16/firmware/src"/>
+        <Include dnOrder="1" value="/Projects/GAV/BNO055_driver/EXP16/BNO055_EXP16/firmware/src/system_config/PIC32MX795"/>
+        <Include dnOrder="2" value="/Projects/GAV/BNO055_driver/EXP16/BNO055_EXP16/firmware/src/PIC32MX795"/>
         <Include dnOrder="3" value="/Users/juan.y/microchip/harmony/v2_06/framework"/>
-        <Include dnOrder="4" value="/Users/juan.y/Documents/GitHub/BNO055_driver/EXP16/BNO055_EXP16/firmware/src/system_config/PIC32MX795/framework"/>
+        <Include dnOrder="4" value="/Projects/GAV/BNO055_driver/EXP16/BNO055_EXP16/firmware/src/system_config/PIC32MX795/framework"/>
         <Include dnOrder="5" value="../src/system_config/PIC32MX795/bsp"/>
       </C32>
     </CompilerItems>
     <Libraries dnOrder="3">
-      <Library dnOrder="0" value="../../../../../../../microchip/harmony/v2_06/bin/framework/peripheral/PIC32MX795F512L_peripherals.a"/>
+      <Library dnOrder="0" value="../../../../../../../Users/juan.y/microchip/harmony/v2_06/bin/framework/peripheral/PIC32MX795F512L_peripherals.a"/>
     </Libraries>
   </Manifest>
 </Configuration>

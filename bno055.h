@@ -514,7 +514,7 @@ bus_read(dev_addr, reg_addr, reg_data, r_len)
 /*!
 *	@brief bno055 struct
 */
-struct bno055_t {
+typedef struct bno055_tag {
 u8 chip_id;/**< chip_id of bno055 */
 u16 sw_rev_id;/**< software revision id of bno055 */
 u8 page_id;/**< page_id of bno055 */
@@ -526,7 +526,7 @@ u8 dev_addr;/**< i2c device address of bno055 */
 BNO055_WR_FUNC_PTR;/**< bus write function pointer */
 BNO055_RD_FUNC_PTR;/**<bus read function pointer */
 void (*delay_msec)(BNO055_MDELAY_DATA_TYPE);/**< delay function pointer */
-};
+}BNO055DEV, *pBNO055DEV;
 /*!
 * @brief struct for accel data read from registers
 */
@@ -2179,7 +2179,7 @@ BNO055_GYRO_ANY_MOTION_THRES_ADDR
  *	affect the reference value of the parameter
  *	(Better case don't change the reference value of the parameter)
  */
-BNO055_RETURN_FUNCTION_TYPE bno055_init(struct bno055_t *bno055);
+BNO055_RETURN_FUNCTION_TYPE bno055_init(pBNO055DEV);
 /*!
  *	@brief
  *	This API gives data to the given register and

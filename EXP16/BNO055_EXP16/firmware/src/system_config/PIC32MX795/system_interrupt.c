@@ -70,7 +70,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 // *****************************************************************************
 
 
-void __ISR(_I2C_2_VECTOR, ipl1AUTO) _IntHandlerDrvI2CInstance0(void)
+void __ISR(_I2C_4_VECTOR, ipl1AUTO) _IntHandlerDrvI2CInstance0(void)
 {
 	DRV_I2C0_Tasks();
  

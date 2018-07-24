@@ -60,7 +60,8 @@
 /*! file <BNO055 >
     brief <Sensor driver for BNO055> */
 /*	STRUCTURE DEFINITIONS	*/
-static struct bno055_t *p_bno055;
+static BNO055DEV bno055;
+pBNO055DEV p_bno055;
 /*	 LOCAL FUNCTIONS	*/
 /*!
  *	@brief
@@ -85,7 +86,7 @@ static struct bno055_t *p_bno055;
  *	affect the reference value of the parameter
  *	(Better case don't change the reference value of the parameter)
  */
-BNO055_RETURN_FUNCTION_TYPE bno055_init(struct bno055_t *bno055)
+BNO055_RETURN_FUNCTION_TYPE bno055_init(pBNO055DEV bno055)
 {
 	/* Variable used to return value of
 	communication routine*/
