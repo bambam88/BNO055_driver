@@ -101,9 +101,6 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 // *****************************************************************************
 // <editor-fold defaultstate="collapsed" desc="DRV_I2C Initialization Data">
 // </editor-fold>
-// <editor-fold defaultstate="collapsed" desc="DRV_SPI Initialization Data"> 
- /*** SPI Driver Initialization Data ***/
-// </editor-fold>
 
 // *****************************************************************************
 // *****************************************************************************
@@ -157,12 +154,6 @@ void SYS_Initialize ( void* data )
     /* Initialize Drivers */
     DRV_I2C0_Initialize();
 
-
-    /*** SPI Driver Index 0 initialization***/
-
-    SYS_INT_VectorPrioritySet(INT_VECTOR_SPI1, INT_PRIORITY_LEVEL1);
-    SYS_INT_VectorSubprioritySet(INT_VECTOR_SPI1, INT_SUBPRIORITY_LEVEL0);
-    sysObj.spiObjectIdx0 = DRV_SPI_Initialize(DRV_SPI_INDEX_0, (const SYS_MODULE_INIT  * const)NULL);
 
     /* Initialize System Services */
     SYS_PORTS_Initialize();

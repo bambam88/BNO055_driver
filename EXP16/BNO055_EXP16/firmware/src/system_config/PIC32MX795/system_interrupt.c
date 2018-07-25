@@ -90,11 +90,6 @@ void __ISR(_I2C_4_VECTOR, ipl1AUTO) _IntHandlerDrvI2CInstance0(void)
 
  
  
-
-void __ISR(_SPI_1_VECTOR, ipl1AUTO) _IntHandlerSPIInstance0(void)
-{
-    DRV_SPI_Tasks(sysObj.spiObjectIdx0);
-}
 /*******************************************************************************
  End of File
 */

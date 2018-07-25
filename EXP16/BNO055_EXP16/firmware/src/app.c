@@ -76,7 +76,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
     This structure should be initialized by the APP_Initialize function.
     
     Application strings and buffers are be defined outside this structure.
-*/
+ */
 /*----------------------------------------------------------------------------*
  *  struct bno055_t parameters can be accessed by using BNO055
  *	BNO055_t having the following parameters
@@ -86,7 +86,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
  *	Delay function pointer: delay_msec
  *	I2C address: dev_addr
  *	Chip id of the sensor: chip_id
-*---------------------------------------------------------------------------*/
+ *---------------------------------------------------------------------------*/
 BNO055DEV bno055;
 
 
@@ -94,7 +94,7 @@ APP_DATA appData;
 // This is the string to write to the slave device.  Be aware that the double quotes adds a null byte at the end of the string.
 // So, writing "Hello World!" actually transmits 13 bytes.
 uint8_t appWriteString[1024] = {0};
-uint8_t appReadString[1024]  = {0};
+uint8_t appReadString[1024] = {0};
 const I2C_SLAVE_ADDRESS_VALUE appSlaveAddress = 0x28;
 uint16_t writeStringLen = 0;
 
@@ -111,7 +111,7 @@ uint16_t writeStringLen = 0;
 // *****************************************************************************
 
 /* TODO:  Add any necessary callback functions.
-*/
+ */
 
 /*	\Brief: The API is used as I2C bus write
  *	\Return : Status of the I2C write
@@ -133,14 +133,14 @@ s8 BNO055_I2C_bus_write(u8 dev_addr, u8 reg_addr, u8 *reg_data, u8 cnt) {
     for (stringpos = BNO055_INIT_VALUE; stringpos < cnt; stringpos++) {
         appWriteString[idx++] = *(reg_data + stringpos);
     }
-    
+
     // Send data over i2c
-    appData.I2CBufferHandle = DRV_I2C_Transmit ( appData.handleI2C0,
-                                                        dev_addr,
-                                                        appWriteString,
-                                                        idx, 
-                                                        NULL);
-            
+    appData.I2CBufferHandle = DRV_I2C_Transmit(appData.handleI2C0,
+            dev_addr,
+            appWriteString,
+            idx,
+            NULL);
+
     appData.I2CBufferEvent = DRV_I2C_BUFFER_EVENT_PENDING;
 
     // wait until the write operation is done
@@ -154,10 +154,10 @@ s8 BNO055_I2C_bus_write(u8 dev_addr, u8 reg_addr, u8 *reg_data, u8 cnt) {
         }
     }
 
-	return (s8)BNO055_iERROR;
+    return (s8) BNO055_iERROR;
 }
 
- /*	\Brief: The API is used as I2C bus read
+/*	\Brief: The API is used as I2C bus read
  *	\Return : Status of the I2C read
  *	\param dev_addr : The device address of the sensor
  *	\param reg_addr : Address of the first register,
@@ -166,22 +166,31 @@ s8 BNO055_I2C_bus_write(u8 dev_addr, u8 reg_addr, u8 *reg_data, u8 cnt) {
  *   which is hold in an array
  *	\param cnt : The no of byte of data to be read
  */
-s8 BNO055_I2C_bus_read(u8 dev_addr, u8 reg_addr, u8 *reg_data, u8 cnt)
-{
+s8 BNO055_I2C_bus_read(u8 dev_addr, u8 reg_addr, u8 *reg_data, u8 cnt) {
     s32 BNO055_iERROR = BNO055_INIT_VALUE;
 
+
+
+
+#if 1                         
+    appData.I2CBufferHandle = DRV_I2C_TransmitThenReceive(appData.handleI2C0,
+            dev_addr << 1,
+            &appWriteString[0],
+            1,
+            reg_data,
+            cnt,
+            NULL);
+#else
     // set the read address
     BNO055_I2C_bus_write(dev_addr, 0x08, reg_data, 1);
-    
-    
-#if 1  
-        // Start the read
-     appData.I2CBufferHandle = DRV_I2C_Receive ( appData.handleI2C0, dev_addr,
-                        appWriteString,
-                        cnt,
-                        NULL);
- #endif
-    
+
+    // Start the read
+    appData.I2CBufferHandle = DRV_I2C_Receive(appData.handleI2C0, dev_addr,
+            appWriteString,
+            cnt,
+            NULL);
+#endif
+
     // wait until all the data has been transferred
     appData.I2CBufferEvent = DRV_I2C_BUFFER_EVENT_PENDING;
 
@@ -195,38 +204,38 @@ s8 BNO055_I2C_bus_read(u8 dev_addr, u8 reg_addr, u8 *reg_data, u8 cnt)
             BNO055_iERROR = BNO055_ERROR;
         }
     }
-    
 
-    
-    
-    return (s8)BNO055_iERROR;
+
+
+
+    return (s8) BNO055_iERROR;
 
 }
+
 /*	Brief : The delay routine
  *	\param : delay in ms
-*/
-void BNO055_delay_msek(u32 msek)
-{
-	/*Here you can write your own delay routine*/
+ */
+void BNO055_delay_msek(u32 msek) {
+    /*Here you can write your own delay routine*/
 }
 
 typedef struct _TAG_EULER_ANGLES {
     float pitch;
     float roll;
     float yaw;
-}EULER_ANGLES,  *pEULER_ANGLES;
+} EULER_ANGLES, *pEULER_ANGLES;
 
 typedef struct _TAG_QUATERNION_VECTOR {
     float q0;
     float q1;
     float q2;
     float q3;
-}QUATERNION_VECTOR, *pQUATERNION_VECTOR;
+} QUATERNION_VECTOR, *pQUATERNION_VECTOR;
 
 
 //Source: http://docs.ros.org/latest-lts/api/dji_sdk_lib/html/DJI__Flight_8cpp_source.html#l00152
-EULER_ANGLES toEulerianAngle(QUATERNION_VECTOR data)
-{
+
+EULER_ANGLES toEulerianAngle(QUATERNION_VECTOR data) {
     EULER_ANGLES ans;
 
     double q2sqr = data.q2 * data.q2;
@@ -246,8 +255,7 @@ EULER_ANGLES toEulerianAngle(QUATERNION_VECTOR data)
     return ans;
 }
 
-QUATERNION_VECTOR toQuaternion(EULER_ANGLES data)
-{
+QUATERNION_VECTOR toQuaternion(EULER_ANGLES data) {
     QUATERNION_VECTOR ans;
     double t0 = cos(data.yaw * 0.5);
     double t1 = sin(data.yaw * 0.5);
@@ -270,9 +278,10 @@ QUATERNION_VECTOR toQuaternion(EULER_ANGLES data)
 // *****************************************************************************
 // *****************************************************************************
 /*--------------------------------------------------------------------------*
-*	The following API is used to map the I2C bus read, write, delay and
-*	device address with global structure bno055_t
-*-------------------------------------------------------------------------*/
+ *	The following API is used to map the I2C bus read, write, delay and
+ *	device address with global structure bno055_t
+ *-------------------------------------------------------------------------*/
+
 /*-------------------------------------------------------------------------*
  *  By using bno055 the following structure parameter can be accessed
  *	Bus write function pointer: BNO055_WR_FUNC_PTR
@@ -280,19 +289,17 @@ QUATERNION_VECTOR toQuaternion(EULER_ANGLES data)
  *	Delay function pointer: delay_msec
  *	I2C address: dev_addr
  *--------------------------------------------------------------------------*/
-s8 init_BNO055_I2C_IFC(pBNO055DEV pBNO055dev)
-{
-	pBNO055dev->bus_write = BNO055_I2C_bus_write;
-	pBNO055dev->bus_read = BNO055_I2C_bus_read;
-	pBNO055dev->delay_msec = BNO055_delay_msek;
-	pBNO055dev->dev_addr = BNO055_I2C_ADDR1;
+s8 init_BNO055_I2C_IFC(pBNO055DEV pBNO055dev) {
+    pBNO055dev->bus_write = BNO055_I2C_bus_write;
+    pBNO055dev->bus_read = BNO055_I2C_bus_read;
+    pBNO055dev->delay_msec = BNO055_delay_msek;
+    pBNO055dev->dev_addr = BNO055_I2C_ADDR1;
 
-	return BNO055_INIT_VALUE;
+    return BNO055_INIT_VALUE;
 }
 
 /* Application's i2c Setup Function */
-static void I2C_Setup( void )
-{
+static void I2C_Setup(void) {
     appData.i2cStates = APP_I2C_START;
 }
 
@@ -305,71 +312,73 @@ static void I2C_Setup( void )
 
  */
 
-	/*************read raw Euler data************/
-	/* variable used to read the euler h data */
-	s16 euler_data_h = BNO055_INIT_VALUE;
-	 /* variable used to read the euler r data */
-	s16 euler_data_r = BNO055_INIT_VALUE;
-	/* variable used to read the euler p data */
-	s16 euler_data_p = BNO055_INIT_VALUE;
-	/* structure used to read the euler hrp data */
-	struct bno055_euler_t euler_hrp;
+/*************read raw Euler data************/
+/* variable used to read the euler h data */
+s16 euler_data_h = BNO055_INIT_VALUE;
+/* variable used to read the euler r data */
+s16 euler_data_r = BNO055_INIT_VALUE;
+/* variable used to read the euler p data */
+s16 euler_data_p = BNO055_INIT_VALUE;
+/* structure used to read the euler hrp data */
+struct bno055_euler_t euler_hrp;
 
-	/************read raw quaternion data**************/
-	/* variable used to read the quaternion w data */
-	s16 quaternion_data_w = BNO055_INIT_VALUE;
-	/* variable used to read the quaternion x data */
-	s16 quaternion_data_x = BNO055_INIT_VALUE;
-	/* variable used to read the quaternion y data */
-	s16 quaternion_data_y = BNO055_INIT_VALUE;
-	/* variable used to read the quaternion z data */
-	s16 quaternion_data_z = BNO055_INIT_VALUE;
-	/* structure used to read the quaternion wxyz data */
-	struct bno055_quaternion_t quaternion_wxyz;
-    
-    	/*****************read raw gravity sensor data****************/
-	/* variable used to read the gravity x data */
-	s16 gravity_data_x = BNO055_INIT_VALUE;
-	/* variable used to read the gravity y data */
-	s16 gravity_data_y = BNO055_INIT_VALUE;
-	/* variable used to read the gravity z data */
-	s16 gravity_data_z = BNO055_INIT_VALUE;
-	/* structure used to read the gravity xyz data */
-	struct bno055_gravity_t gravity_xyz;
-    
-    	/************read raw linear acceleration data***********/
-	/* variable used to read the linear accel x data */
-	s16 linear_accel_data_x = BNO055_INIT_VALUE;
-	/* variable used to read the linear accel y data */
-	s16 linear_accel_data_y = BNO055_INIT_VALUE;
-	/* variable used to read the linear accel z data */
-	s16 linear_accel_data_z = BNO055_INIT_VALUE;
-	/* structure used to read the linear accel xyz data */
-	struct bno055_linear_accel_t linear_acce_xyz;
+/************read raw quaternion data**************/
+/* variable used to read the quaternion w data */
+s16 quaternion_data_w = BNO055_INIT_VALUE;
+/* variable used to read the quaternion x data */
+s16 quaternion_data_x = BNO055_INIT_VALUE;
+/* variable used to read the quaternion y data */
+s16 quaternion_data_y = BNO055_INIT_VALUE;
+/* variable used to read the quaternion z data */
+s16 quaternion_data_z = BNO055_INIT_VALUE;
+/* structure used to read the quaternion wxyz data */
+struct bno055_quaternion_t quaternion_wxyz;
 
+/*****************read raw gravity sensor data****************/
+/* variable used to read the gravity x data */
+s16 gravity_data_x = BNO055_INIT_VALUE;
+/* variable used to read the gravity y data */
+s16 gravity_data_y = BNO055_INIT_VALUE;
+/* variable used to read the gravity z data */
+s16 gravity_data_z = BNO055_INIT_VALUE;
+/* structure used to read the gravity xyz data */
+struct bno055_gravity_t gravity_xyz;
 
+/************read raw linear acceleration data***********/
+/* variable used to read the linear accel x data */
+s16 linear_accel_data_x = BNO055_INIT_VALUE;
+/* variable used to read the linear accel y data */
+s16 linear_accel_data_y = BNO055_INIT_VALUE;
+/* variable used to read the linear accel z data */
+s16 linear_accel_data_z = BNO055_INIT_VALUE;
+/* structure used to read the linear accel xyz data */
+struct bno055_linear_accel_t linear_acce_xyz;
 
-    
+uint8_t accel_calib_status;
+uint8_t gyro_calib_status;
+uint8_t mag_calib_status;
+uint8_t sys_calib_status;
+
 static void APP_I2C_Task(void) {
-    	/* Variable used to return value of
-	communication routine*/
-	s32 comres = BNO055_ERROR;
-    
+    /* Variable used to return value of
+communication routine*/
+    s32 comres = BNO055_ERROR;
+
     switch (appData.i2cStates) {
         default:
 
         case APP_I2C_START:
         {
-            // Switch to the Transmit State.
-            appData.i2cStates = APP_I2C_TRANSMIT;
+            // Switch to the reading the euler angles
+            appData.i2cStates = APP_I2C_READ_EULER_ANGLES;
             /************************* START READ RAW FUSION DATA ********
-    For reading fusion data it is required to set the
-    operation modes of the sensor
-    operation mode can set from the register
-    page - page0
-    register - 0x3D
-    bit - 0 to 3
-    for sensor data read following operation mode have to set
+                For reading fusion data it is required to set the
+                operation modes of the sensor
+                operation mode can set from the register
+                page - page0
+                register - 0x3D
+                bit - 0 to 3
+                for sensor data read following operation mode have to set
              *FUSION MODE
              *0x08 - BNO055_OPERATION_MODE_IMUPLUS
              *0x09 - BNO055_OPERATION_MODE_COMPASS
@@ -378,16 +387,16 @@ static void APP_I2C_Task(void) {
              *0x0C - BNO055_OPERATION_MODE_NDOF
         based on the user need configure the operation mode*/
             comres += bno055_set_operation_mode(BNO055_OPERATION_MODE_NDOF);
-            
+
             /************************* END READ RAW FUSION DATA  ************/
 
             break;
         }
-        case APP_I2C_TRANSMIT:
+        case APP_I2C_READ_EULER_ANGLES:
         {
-           /*	Raw Euler H, R and P data can read from the register
-                page - page 0
-                register - 0x1A to 0x1E */
+            /*	Raw Euler H, R and P data can read from the register
+                 page - page 0
+                 register - 0x1A to 0x1E */
             comres += bno055_read_euler_h(&euler_data_h);
             comres += bno055_read_euler_r(&euler_data_r);
             comres += bno055_read_euler_p(&euler_data_p);
@@ -417,25 +426,18 @@ static void APP_I2C_Task(void) {
 
             break;
         }
-        case APP_I2C_READ_FROM_ADDR:
+        case APP_I2C_READ_CALIBRATION_STATUS:
 
-            // Transmit the Slave Addr and the Register address
-            if (appData.I2CBufferHandle == NULL) {
-                appData.I2CBufferHandle = DRV_I2C_Transmit(appData.handleI2C0,
-                        appSlaveAddress,
-                        appWriteString,
-                        writeStringLen,
-                        NULL);
-            } else {
-                appData.I2CBufferEvent = DRV_I2C_TransferStatusGet(appData.handleI2C0,
-                        appData.I2CBufferHandle);
-                if (appData.I2CBufferEvent == DRV_I2C_BUFFER_EVENT_COMPLETE) {
-                    appData.i2cStates = APP_I2C_READ_DATA_BYTES;
-                }
-                if (appData.I2CBufferEvent == DRV_I2C_BUFFER_EVENT_ERROR) {
-                    appData.i2cStates = APP_I2C_ERROR;
-                }
-            }
+            accel_calib_status = 0;
+            gyro_calib_status = 0;
+            mag_calib_status = 0;
+            sys_calib_status = 0;
+
+            bno055_get_accel_calib_stat(&accel_calib_status);
+            bno055_get_gyro_calib_stat(&gyro_calib_status);
+            bno055_get_mag_calib_stat(&mag_calib_status);
+            bno055_get_sys_calib_stat(&sys_calib_status);
+
 
             break;
 
@@ -454,7 +456,12 @@ static void APP_I2C_Task(void) {
 /* TODO:  Add any necessary local functions.
  */
 
+void wait_ms(uint32_t millisecs) {
+    do {
+        millisecs--;
 
+    } while (millisecs);
+}
 // *****************************************************************************
 // *****************************************************************************
 // Section: Application Initialization and State Machine Functions
@@ -478,21 +485,7 @@ void APP_Initialize(void) {
     /* TODO: Initialize your application's state machine and other
      * parameters.
      */
-    /*--------------------------------------------------------------------------*
-     *  This API used to assign the value/reference of
-     *	the following parameters
-     *	I2C address
-     *	Bus Write
-     *	Bus read
-     *	Chip id
-     *	Page id
-     *	Accel revision id
-     *	Mag revision id
-     *	Gyro revision id
-     *	Boot loader revision id
-     *	Software revision id
-     *-------------------------------------------------------------------------*/
-    bno055_init(&bno055);
+
 }
 
 /******************************************************************************
@@ -515,6 +508,26 @@ void APP_Tasks(void) {
             if (appData.handleI2C0 == DRV_HANDLE_INVALID) {
                 appData.handleI2C0 = DRV_I2C_Open(APP_DRV_I2C_INDEX, DRV_IO_INTENT_EXCLUSIVE);
                 appInitialized &= (DRV_HANDLE_INVALID != appData.handleI2C0);
+
+                /*--------------------------------------------------------------------------*
+                 *  This API used to assign the value/reference of
+                 *	the following parameters
+                 *	I2C address
+                 *	Bus Write
+                 *	Bus read
+                 *	Chip id
+                 *	Page id
+                 *	Accel revision id
+                 *	Mag revision id
+                 *	Gyro revision id
+                 *	Boot loader revision id
+                 *	Software revision id
+                 *-------------------------------------------------------------------------*/
+                bno055.bus_write = BNO055_I2C_bus_write;
+                bno055.bus_read = BNO055_I2C_bus_read;
+                bno055.delay_msec = wait_ms;
+                bno055.dev_addr = appSlaveAddress;
+                bno055_init(&bno055);
             }
 
             if (appInitialized) {

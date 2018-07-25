@@ -59,7 +59,6 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include "system/clk/sys_clk.h"
 #include "system/int/sys_int.h"
 #include "system/ports/sys_ports.h"
-#include "driver/spi/static/drv_spi_static.h"
 #include "app.h"
 
 
@@ -95,9 +94,6 @@ extern "C" {
 typedef struct
 {
 
-
-    /*** SPI Object for Index 0 ***/
-    SYS_MODULE_OBJ				spiObjectIdx0;
 
 } SYSTEM_OBJECTS;
 

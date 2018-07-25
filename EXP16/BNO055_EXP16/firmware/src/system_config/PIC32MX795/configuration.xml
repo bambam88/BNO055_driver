@@ -5,7 +5,7 @@
     <SystemStartScript dnOrder="1"/>
   </DisplayManager>
   <General>
-    <HarmonyPath dnOrder="0" path="../../../../../Users/juan.y/microchip/harmony/v2_06"/>
+    <HarmonyPath dnOrder="0" path="../../../../microchip/harmony/v2_06"/>
     <Processor dnOrder="1" name="PIC32MX795F512L"/>
     <Board dnOrder="2" name=" "/>
     <ForceOptimization dnOrder="3" flag="true"/>
@@ -18,290 +18,222 @@
         <Path dnOrder="1">Header&amp;#160;Files/framework/driver</Path>
       </File>
       <File dnOrder="1">
-        <Name dnOrder="0">sys_dma.h</Name>
-        <Path dnOrder="1">Header&amp;#160;Files/framework/system/dma</Path>
-      </File>
-      <File dnOrder="2">
         <Name dnOrder="0">osal.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/osal</Path>
       </File>
-      <File dnOrder="3">
+      <File dnOrder="2">
         <Name dnOrder="0">sys_ports.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/system/ports</Path>
       </File>
-      <File dnOrder="4">
-        <Name dnOrder="0">drv_spi.h</Name>
-        <Path dnOrder="1">Header&amp;#160;Files/framework/driver/spi</Path>
-      </File>
-      <File dnOrder="5">
-        <Name dnOrder="0">drv_spi_definitions.h</Name>
-        <Path dnOrder="1">Header&amp;#160;Files/framework/driver/spi</Path>
-      </File>
-      <File dnOrder="6">
-        <Name dnOrder="0">drv_spi_sys_queue_local_fifo.h</Name>
-        <Path dnOrder="1">Header&amp;#160;Files/framework/driver/spi/src</Path>
-      </File>
-      <File dnOrder="7">
+      <File dnOrder="3">
         <Name dnOrder="0">driver.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/driver</Path>
       </File>
-      <File dnOrder="8">
+      <File dnOrder="4">
         <Name dnOrder="0">drv_i2c_compatibility.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/driver/i2c</Path>
       </File>
-      <File dnOrder="9">
+      <File dnOrder="5">
         <Name dnOrder="0">sys_common.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/system/common</Path>
       </File>
-      <File dnOrder="10">
+      <File dnOrder="6">
         <Name dnOrder="0">sys_buffer.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/system/common</Path>
       </File>
-      <File dnOrder="11">
+      <File dnOrder="7">
         <Name dnOrder="0">sys_int_pic32.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/framework/system/int/src</Path>
       </File>
-      <File dnOrder="12">
+      <File dnOrder="8">
         <Name dnOrder="0">sys_clk_compatibility.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/system/clk</Path>
       </File>
-      <File dnOrder="13">
+      <File dnOrder="9">
         <Name dnOrder="0">sys_clk.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/system/clk</Path>
       </File>
-      <File dnOrder="14">
-        <Name dnOrder="0">drv_spi_sys_queue.h</Name>
-        <Path dnOrder="1">Header&amp;#160;Files/framework/driver/spi/src</Path>
-      </File>
-      <File dnOrder="15">
+      <File dnOrder="10">
         <Name dnOrder="0">sys_ports_definitions.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/system/ports</Path>
       </File>
-      <File dnOrder="16">
+      <File dnOrder="11">
         <Name dnOrder="0">osal_impl_basic.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/osal</Path>
       </File>
-      <File dnOrder="17">
+      <File dnOrder="12">
         <Name dnOrder="0">drv_i2c_variant_mapping.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/driver/i2c/src</Path>
       </File>
-      <File dnOrder="18">
+      <File dnOrder="13">
         <Name dnOrder="0">sys_clk_mapping.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/system/clk</Path>
       </File>
-      <File dnOrder="19">
-        <Name dnOrder="0">sys_int_mapping.h</Name>
-        <Path dnOrder="1">Header&amp;#160;Files/framework/system/int</Path>
-      </File>
-      <File dnOrder="20">
+      <File dnOrder="14">
         <Name dnOrder="0">osal_definitions.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/osal</Path>
       </File>
-      <File dnOrder="21">
-        <Name dnOrder="0">drv_spi_internal.h</Name>
-        <Path dnOrder="1">Header&amp;#160;Files/framework/driver/spi/src/dynamic</Path>
+      <File dnOrder="15">
+        <Name dnOrder="0">sys_int_mapping.h</Name>
+        <Path dnOrder="1">Header&amp;#160;Files/framework/system/int</Path>
       </File>
-      <File dnOrder="22">
+      <File dnOrder="16">
         <Name dnOrder="0">sys_int_private.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/system/int/src</Path>
       </File>
-      <File dnOrder="23">
+      <File dnOrder="17">
         <Name dnOrder="0">drv_i2c_local.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/driver/i2c/src</Path>
       </File>
-      <File dnOrder="24">
+      <File dnOrder="18">
         <Name dnOrder="0">system.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/system</Path>
       </File>
-      <File dnOrder="25">
+      <File dnOrder="19">
         <Name dnOrder="0">sys_debug.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/system/debug</Path>
       </File>
-      <File dnOrder="26">
+      <File dnOrder="20">
         <Name dnOrder="0">drv_i2c.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/driver/i2c</Path>
       </File>
-      <File dnOrder="27">
+      <File dnOrder="21">
         <Name dnOrder="0">sys_module.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/system/common</Path>
       </File>
-      <File dnOrder="28">
+      <File dnOrder="22">
         <Name dnOrder="0">drv_i2c_mapping.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/driver/i2c</Path>
       </File>
-      <File dnOrder="29">
-        <Name dnOrder="0">drv_spi_variant_mapping.h</Name>
-        <Path dnOrder="1">Header&amp;#160;Files/framework/driver/spi/src</Path>
-      </File>
-      <File dnOrder="30">
+      <File dnOrder="23">
         <Name dnOrder="0">drv_i2c_device_pic32m.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/driver/i2c</Path>
       </File>
-      <File dnOrder="31">
+      <File dnOrder="24">
         <Name dnOrder="0">sys_queue.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/system/common</Path>
       </File>
-      <File dnOrder="32">
+      <File dnOrder="25">
         <Name dnOrder="0">sys_int.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/system/int</Path>
       </File>
     </Files>
     <Templates dnOrder="1">
       <Template dnOrder="0">
-        <Name dnOrder="0">drv_spi_static_local.h</Name>
-        <Path dnOrder="1">Header&amp;#160;Files/app/system_config/PIC32MX795/framework/driver/spi/static/src</Path>
-        <Checksum dnOrder="2">5810E0FF8C70586079140C4A57762B18</Checksum>
-      </Template>
-      <Template dnOrder="1">
         <Name dnOrder="0">system_config.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/app/system_config/PIC32MX795</Path>
-        <Checksum dnOrder="2">C8B5A9DB09DD2B35F3E814923ADC7896</Checksum>
+        <Checksum dnOrder="2">4821E5F30D2AB8B7C5DC95A4B0A0942D</Checksum>
       </Template>
-      <Template dnOrder="2">
+      <Template dnOrder="1">
         <Name dnOrder="0">drv_i2c_static_buffer_model.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/PIC32MX795/framework/driver/i2c/src</Path>
         <Checksum dnOrder="2">6C6B199E2F7C6ACDBB335E6988A11EBB</Checksum>
       </Template>
-      <Template dnOrder="3">
+      <Template dnOrder="2">
         <Name dnOrder="0">sys_devcon.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/PIC32MX795/framework/system/devcon/src</Path>
         <Checksum dnOrder="2">54ADBD4A35BCA03C42C74182FCE41849</Checksum>
       </Template>
-      <Template dnOrder="4">
-        <Name dnOrder="0">drv_spi_static.h</Name>
-        <Path dnOrder="1">Header&amp;#160;Files/app/system_config/PIC32MX795/framework/driver/spi/static</Path>
-        <Checksum dnOrder="2">A5F11D81D1C577E89060E519EE15E35F</Checksum>
-      </Template>
-      <Template dnOrder="5">
-        <Name dnOrder="0">drv_spi_static_sys_queue.h</Name>
-        <Path dnOrder="1">Header&amp;#160;Files/app/system_config/PIC32MX795/framework/driver/spi/static/src</Path>
-        <Checksum dnOrder="2">3D489FB0B5415BB6F80FA34FC0CEE9F7</Checksum>
-      </Template>
-      <Template dnOrder="6">
+      <Template dnOrder="3">
         <Name dnOrder="0">drv_i2c_mapping.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/PIC32MX795/framework/driver/i2c/src</Path>
         <Checksum dnOrder="2">E1044098D8EA50DFF2E94B5E060B5160</Checksum>
       </Template>
-      <Template dnOrder="7">
-        <Name dnOrder="0">drv_spi_static_tasks.c</Name>
-        <Path dnOrder="1">Source&amp;#160;Files/app/system_config/PIC32MX795/framework/driver/spi/static/src</Path>
-        <Checksum dnOrder="2">0F5E800F4FE28130F62C0B969DBCD466</Checksum>
-      </Template>
-      <Template dnOrder="8">
+      <Template dnOrder="4">
         <Name dnOrder="0">sys_clk_pic32mx.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/PIC32MX795/framework/system/clk/src</Path>
         <Checksum dnOrder="2">FDF6C8068CFFAEEC5F8537A8D6514230</Checksum>
       </Template>
-      <Template dnOrder="9">
+      <Template dnOrder="5">
         <Name dnOrder="0">sys_devcon_pic32mx.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/PIC32MX795/framework/system/devcon/src</Path>
         <Checksum dnOrder="2">5141464248E33ABE9E7D144A2D4DC129</Checksum>
       </Template>
-      <Template dnOrder="10">
+      <Template dnOrder="6">
         <Name dnOrder="0">system_definitions.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/app/system_config/PIC32MX795</Path>
-        <Checksum dnOrder="2">02502926291F84DC8039676D07197939</Checksum>
+        <Checksum dnOrder="2">D0601283458627138EEA6061A86E8A20</Checksum>
       </Template>
-      <Template dnOrder="11">
+      <Template dnOrder="7">
         <Name dnOrder="0">sys_devcon_local.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/app/system_config/PIC32MX795/framework/system/devcon/src</Path>
         <Checksum dnOrder="2">B66F9B4DBD85DA7F9DE775E864E01395</Checksum>
       </Template>
-      <Template dnOrder="12">
+      <Template dnOrder="8">
         <Name dnOrder="0">system_init.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/PIC32MX795</Path>
-        <Checksum dnOrder="2">AFB2F52F70B42C3B8B193F650EA5E2F9</Checksum>
+        <Checksum dnOrder="2">297557BB6322C5E2D8852A2CDF476629</Checksum>
       </Template>
-      <Template dnOrder="13">
+      <Template dnOrder="9">
         <Name dnOrder="0">sys_ports_static.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/PIC32MX795/framework/system/ports/src</Path>
         <Checksum dnOrder="2">BC814B1E833F48A33953D65B71BC498D</Checksum>
       </Template>
-      <Template dnOrder="14">
+      <Template dnOrder="10">
         <Name dnOrder="0">system_interrupt.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/PIC32MX795</Path>
-        <Checksum dnOrder="2">7EDDE38AA8FF854FEF2DE0778F0F2878</Checksum>
+        <Checksum dnOrder="2">D1ED1B3151F00794AEB7573BFB879E65</Checksum>
       </Template>
-      <Template dnOrder="15">
-        <Name dnOrder="0">drv_spi_static.c</Name>
-        <Path dnOrder="1">Source&amp;#160;Files/app/system_config/PIC32MX795/framework/driver/spi/static/src</Path>
-        <Checksum dnOrder="2">8D9985CBDEB9BEF957644E5D647B2BDF</Checksum>
-      </Template>
-      <Template dnOrder="16">
+      <Template dnOrder="11">
         <Name dnOrder="0">sys_devcon.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/app/system_config/PIC32MX795/framework/system/devcon</Path>
         <Checksum dnOrder="2">07580DCDEF89D9C79B062544109C5367</Checksum>
       </Template>
-      <Template dnOrder="17">
-        <Name dnOrder="0">drv_spi_static_sys_queue.c</Name>
-        <Path dnOrder="1">Source&amp;#160;Files/app/system_config/PIC32MX795/framework/driver/spi/static/src</Path>
-        <Checksum dnOrder="2">00A7FC94F1DE28D3FAD6F9589471FEA9</Checksum>
-      </Template>
-      <Template dnOrder="18">
+      <Template dnOrder="12">
         <Name dnOrder="0">main.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app</Path>
         <Checksum dnOrder="2">81A51474D8A80D41AD749DEAE4C1A7A3</Checksum>
       </Template>
-      <Template dnOrder="19">
+      <Template dnOrder="13">
         <Name dnOrder="0">bsp.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/app/system_config/PIC32MX795/bsp</Path>
         <Checksum dnOrder="2">7567B3DF8AD82B4BA40BB70A80E7AC51</Checksum>
       </Template>
-      <Template dnOrder="20">
+      <Template dnOrder="14">
         <Name dnOrder="0">system_exceptions.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/PIC32MX795</Path>
         <Checksum dnOrder="2">9836A04F3E98D3971DB91DF539160F34</Checksum>
       </Template>
-      <Template dnOrder="21">
+      <Template dnOrder="15">
         <Name dnOrder="0">drv_i2c_static_buffer_model.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/app/system_config/PIC32MX795/framework/driver/i2c</Path>
         <Checksum dnOrder="2">960C81364707EBD7F58A98E66A4B2745</Checksum>
       </Template>
-      <Template dnOrder="22">
+      <Template dnOrder="16">
         <Name dnOrder="0">app.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app</Path>
         <Checksum dnOrder="2">E95E0002611D0B416789C5069E1D18D6</Checksum>
-        <ProjectFileChecksum dnOrder="3">BFFB2574B094756AAF958662A7C4B64B</ProjectFileChecksum>
+        <ProjectFileChecksum dnOrder="3">A6850FA2F6F306E98569BA4F45FA6421</ProjectFileChecksum>
       </Template>
-      <Template dnOrder="23">
-        <Name dnOrder="0">drv_spi_static_ebm_tasks.c</Name>
-        <Path dnOrder="1">Source&amp;#160;Files/app/system_config/PIC32MX795/framework/driver/spi/static/src</Path>
-        <Checksum dnOrder="2">D86E6BEF4F2B90175EDC6C711C9E4F81</Checksum>
-      </Template>
-      <Template dnOrder="24">
+      <Template dnOrder="17">
         <Name dnOrder="0">bsp.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/PIC32MX795/bsp</Path>
         <Checksum dnOrder="2">8B47CF905B347CA696FDE39F0320241C</Checksum>
       </Template>
-      <Template dnOrder="25">
+      <Template dnOrder="18">
         <Name dnOrder="0">system_tasks.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/PIC32MX795</Path>
         <Checksum dnOrder="2">C2FDF6218CDD9CE0E51AFAC4ACBB5F79</Checksum>
       </Template>
-      <Template dnOrder="26">
+      <Template dnOrder="19">
         <Name dnOrder="0">app.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/app</Path>
         <Checksum dnOrder="2">92603BDD404D503525C710147E5C3933</Checksum>
-        <ProjectFileChecksum dnOrder="3">7C2E545A34DEAE75F9C3140AB5689845</ProjectFileChecksum>
-      </Template>
-      <Template dnOrder="27">
-        <Name dnOrder="0">drv_spi_mapping.c</Name>
-        <Path dnOrder="1">Source&amp;#160;Files/app/system_config/PIC32MX795/framework/driver/spi/static/src</Path>
-        <Checksum dnOrder="2">ADEEE2519E932B46D44C41B8F44E1F19</Checksum>
+        <ProjectFileChecksum dnOrder="3">D0C584E4C69916AE71D864A7EEE0BD0B</ProjectFileChecksum>
       </Template>
     </Templates>
     <CompilerItems dnOrder="2">
       <C32 dnOrder="0">
-        <Include dnOrder="0" value="/Projects/GAV/BNO055_driver/EXP16/BNO055_EXP16/firmware/src"/>
-        <Include dnOrder="1" value="/Projects/GAV/BNO055_driver/EXP16/BNO055_EXP16/firmware/src/system_config/PIC32MX795"/>
-        <Include dnOrder="2" value="/Projects/GAV/BNO055_driver/EXP16/BNO055_EXP16/firmware/src/PIC32MX795"/>
-        <Include dnOrder="3" value="/Users/juan.y/microchip/harmony/v2_06/framework"/>
-        <Include dnOrder="4" value="/Projects/GAV/BNO055_driver/EXP16/BNO055_EXP16/firmware/src/system_config/PIC32MX795/framework"/>
+        <Include dnOrder="0" value="C:\Projects\BNO055_driver\EXP16\BNO055_EXP16\firmware\src"/>
+        <Include dnOrder="1" value="C:\Projects\BNO055_driver\EXP16\BNO055_EXP16\firmware\src\system_config\PIC32MX795"/>
+        <Include dnOrder="2" value="C:\Projects\BNO055_driver\EXP16\BNO055_EXP16\firmware\src\PIC32MX795"/>
+        <Include dnOrder="3" value="C:\microchip\harmony\v2_06\framework"/>
+        <Include dnOrder="4" value="C:\Projects\BNO055_driver\EXP16\BNO055_EXP16\firmware\src\system_config\PIC32MX795\framework"/>
         <Include dnOrder="5" value="../src/system_config/PIC32MX795/bsp"/>
       </C32>
     </CompilerItems>
     <Libraries dnOrder="3">
-      <Library dnOrder="0" value="../../../../../../../Users/juan.y/microchip/harmony/v2_06/bin/framework/peripheral/PIC32MX795F512L_peripherals.a"/>
+      <Library dnOrder="0" value="../../../../../../microchip/harmony/v2_06/bin/framework/peripheral/PIC32MX795F512L_peripherals.a"/>
     </Libraries>
   </Manifest>
 </Configuration>

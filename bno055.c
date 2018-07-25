@@ -60,7 +60,7 @@
 /*! file <BNO055 >
     brief <Sensor driver for BNO055> */
 /*	STRUCTURE DEFINITIONS	*/
-static BNO055DEV bno055;
+
 pBNO055DEV p_bno055;
 /*	 LOCAL FUNCTIONS	*/
 /*!
@@ -97,8 +97,9 @@ BNO055_RETURN_FUNCTION_TYPE bno055_init(pBNO055DEV bno055)
 	*/
 	u8 a_SW_ID_u8[BNO055_REV_ID_SIZE] = {
 	BNO055_INIT_VALUE, BNO055_INIT_VALUE};
-	/* stuct parameters are assign to bno055*/
-	p_bno055 = bno055;
+
+    p_bno055 = bno055;
+    
 	/* Write the default page as zero*/
 	com_rslt = p_bno055->BNO055_BUS_WRITE_FUNC
 	(p_bno055->dev_addr,
