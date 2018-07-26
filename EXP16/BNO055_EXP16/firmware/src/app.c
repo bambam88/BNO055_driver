@@ -104,6 +104,14 @@ uint16_t writeStringLen = 0;
 #define WRITE_THEN_READ_OVERHEAD        0x02
 
 
+// TImer 
+#define PRINT_PERIOD 0x0034 // SYS Clock/TMR Prescaler/ticks per second
+#define APP_HEARTBEAT_TMR_IS_PERIODIC true
+#define APP_HEARTBEAT_TMR_PERIOD PRINT_PERIOD
+#define APP_ALARM_PERIOD_IN_MS  167
+
+
+
 // *****************************************************************************
 // *****************************************************************************
 // Section: Application Callback Functions
@@ -359,18 +367,49 @@ uint8_t gyro_calib_status;
 uint8_t mag_calib_status;
 uint8_t sys_calib_status;
 
+void APP_TimerAlarmSetup ( void )
+{
+    uint32_t tmrFreq, countsPerAlarmPeriod, timerPeriod;
+    uint16_t countMax;
+ 
+    tmrFreq = DRV_TMR_CounterFrequencyGet(appData.heartbeatTimer); // timer increment rate
+ 
+    // number of timer counts needed for 1 alarm period
+    // alarm period = timer increment rate * # of seconds per alarm period
+    countsPerAlarmPeriod = tmrFreq * APP_ALARM_PERIOD_IN_MS / 1000;
+ 
+    // number of timer interrupts needed per alarm period (16-bit timer)
+    countMax = (countsPerAlarmPeriod/65536) + 1;            // +1 to round up
+ 
+    timerPeriod = countsPerAlarmPeriod / countMax;          // timer period value
+ 
+    appData.tmrPeriod = timerPeriod;
+    appData.alarmCountMax = countMax;
+}
+
+
+void APP_TimerCallback ( uintptr_t context, uint32_t alarmCount ) {
+
+    appData.alarmHasFired = true; 
+}
+
+
 static void APP_I2C_Task(void) {
     /* Variable used to return value of
 communication routine*/
     s32 comres = BNO055_ERROR;
+    static uint32_t tickCounter = 0;
+    static SYS_TMR_HANDLE handle;
 
     switch (appData.i2cStates) {
         default:
 
         case APP_I2C_START:
         {
+            tickCounter = 0;
             // Switch to the reading the euler angles
-            appData.i2cStates = APP_I2C_READ_EULER_ANGLES;
+            appData.i2cStates = APP_I2C_DONE;
+#if defined (USE_FUSION_OPS)            
             /************************* START READ RAW FUSION DATA ********
                 For reading fusion data it is required to set the
                 operation modes of the sensor
@@ -387,13 +426,35 @@ communication routine*/
              *0x0C - BNO055_OPERATION_MODE_NDOF
         based on the user need configure the operation mode*/
             comres += bno055_set_operation_mode(BNO055_OPERATION_MODE_NDOF);
-
+#endif
             /************************* END READ RAW FUSION DATA  ************/
+              // Configure alarm (fireoff at a rate of 1/6 hz)   
+#if 1            
+            appData.heartbeatTimer = SYS_TMR_CallbackPeriodic (10, 0, &APP_TimerCallback);
+#else       
+            appData.heartbeatTimer = DRV_TMR_Open ( DRV_TMR_INDEX_0,
+                                                  DRV_IO_INTENT_EXCLUSIVE );
+            if ( DRV_HANDLE_INVALID != appData.heartbeatTimer )  // Timer Driver opened?
+            {
+                APP_TimerAlarmSetup();
+                DRV_TMR_AlarmRegister ( appData.heartbeatTimer,
+                                        appData.tmrPeriod,
+                                        true,
+                                        0,
+                                        APP_TimerCallback );
+                DRV_TMR_Start(appData.heartbeatTimer);     // Start the timer
+            }  
+#endif
+            appData.alarmHasFired = false;
+            
+
+            
 
             break;
         }
         case APP_I2C_READ_EULER_ANGLES:
         {
+#if defined (USE_FUSION_OPS)                        
             /*	Raw Euler H, R and P data can read from the register
                  page - page 0
                  register - 0x1A to 0x1E */
@@ -423,6 +484,9 @@ communication routine*/
             comres += bno055_read_gravity_y(&gravity_data_y);
             comres += bno055_read_gravity_z(&gravity_data_z);
             comres += bno055_read_gravity_xyz(&gravity_xyz);
+#endif            
+            appData.i2cStates = APP_I2C_DONE;
+            Nop();
 
             break;
         }
@@ -432,17 +496,32 @@ communication routine*/
             gyro_calib_status = 0;
             mag_calib_status = 0;
             sys_calib_status = 0;
-
+#if defined (USE_FUSION_OPS)            
             bno055_get_accel_calib_stat(&accel_calib_status);
             bno055_get_gyro_calib_stat(&gyro_calib_status);
             bno055_get_mag_calib_stat(&mag_calib_status);
             bno055_get_sys_calib_stat(&sys_calib_status);
-
+#endif            
+            appData.i2cStates = APP_I2C_DONE;
 
             break;
 
         case APP_I2C_DONE:
         {
+            if (appData.alarmHasFired)
+            {
+                appData.alarmHasFired = false;
+                if (((tickCounter++)%6) == 0 )
+                {
+                    // every second get the calibration flags
+                    appData.i2cStates = APP_I2C_READ_CALIBRATION_STATUS;
+                }
+                else
+                {
+                    /// other wise read the the euler angles
+                    appData.i2cStates = APP_I2C_READ_EULER_ANGLES;
+                }
+            }
             break;
         }
         case APP_I2C_ERROR:
@@ -481,6 +560,9 @@ void APP_Initialize(void) {
     appData.state = APP_STATE_INIT;
 
     appData.handleI2C0 = DRV_HANDLE_INVALID;
+    
+     appData.heartbeatTimer = DRV_HANDLE_INVALID;   // don't use until initialized
+    appData.alarmCount = 0;  
 
     /* TODO: Initialize your application's state machine and other
      * parameters.
@@ -504,7 +586,7 @@ void APP_Tasks(void) {
         case APP_STATE_INIT:
         {
             bool appInitialized = true;
-
+#if defined (USE_FUSION_OPS)    
             if (appData.handleI2C0 == DRV_HANDLE_INVALID) {
                 appData.handleI2C0 = DRV_I2C_Open(APP_DRV_I2C_INDEX, DRV_IO_INTENT_EXCLUSIVE);
                 appInitialized &= (DRV_HANDLE_INVALID != appData.handleI2C0);
@@ -527,9 +609,13 @@ void APP_Tasks(void) {
                 bno055.bus_read = BNO055_I2C_bus_read;
                 bno055.delay_msec = wait_ms;
                 bno055.dev_addr = appSlaveAddress;
+                
+             
                 bno055_init(&bno055);
-            }
 
+            }
+            
+#endif
             if (appInitialized) {
                 I2C_Setup();
 

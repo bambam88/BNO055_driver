@@ -101,6 +101,18 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 // *****************************************************************************
 // <editor-fold defaultstate="collapsed" desc="DRV_I2C Initialization Data">
 // </editor-fold>
+/*** TMR Driver Initialization Data ***/
+
+const DRV_TMR_INIT drvTmr0InitData =
+{
+    .moduleInit.sys.powerState = DRV_TMR_POWER_STATE_IDX0,
+    .tmrId = DRV_TMR_PERIPHERAL_ID_IDX0,
+    .clockSource = DRV_TMR_CLOCK_SOURCE_IDX0,
+    .prescale = DRV_TMR_PRESCALE_IDX0,
+    .mode = DRV_TMR_OPERATION_MODE_16_BIT,
+    .interruptSource = DRV_TMR_INTERRUPT_SOURCE_IDX0,
+    .asyncWriteEnable = false,
+};
 
 // *****************************************************************************
 // *****************************************************************************
@@ -116,6 +128,15 @@ SYSTEM_OBJECTS sysObj;
 // Section: Module Initialization Data
 // *****************************************************************************
 // *****************************************************************************
+// <editor-fold defaultstate="collapsed" desc="SYS_TMR Initialization Data">
+/*** TMR Service Initialization Data ***/
+const SYS_TMR_INIT sysTmrInitData =
+{
+    .moduleInit = {SYS_MODULE_POWER_RUN_FULL},
+    .drvIndex = DRV_TMR_INDEX_0,
+    .tmrFreq = 1000, 
+};
+// </editor-fold>
 
 // *****************************************************************************
 // *****************************************************************************
@@ -155,11 +176,22 @@ void SYS_Initialize ( void* data )
     DRV_I2C0_Initialize();
 
 
+    sysObj.drvTmr0 = DRV_TMR_Initialize(DRV_TMR_INDEX_0, (SYS_MODULE_INIT *)&drvTmr0InitData);
+
+
+    SYS_INT_VectorPrioritySet(INT_VECTOR_T1, INT_PRIORITY_LEVEL1);
+    SYS_INT_VectorSubprioritySet(INT_VECTOR_T1, INT_SUBPRIORITY_LEVEL0);
+ 
+ 
+ 
     /* Initialize System Services */
     SYS_PORTS_Initialize();
 
     /*** Interrupt Service Initialization Code ***/
     SYS_INT_Initialize();
+
+    /*** TMR Service Initialization Code ***/
+    sysObj.sysTmr  = SYS_TMR_Initialize(SYS_TMR_INDEX_0, (const SYS_MODULE_INIT  * const)&sysTmrInitData);
 
     /* Initialize Middleware */
 

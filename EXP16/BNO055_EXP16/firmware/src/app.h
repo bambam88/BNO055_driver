@@ -129,9 +129,15 @@ typedef struct
     /* TODO: Define any additional data used by the application. */
     /* I2C Driver variables  */
     DRV_HANDLE                              handleI2C0;
+    /* Heartbeat driver timer handle. */
+    DRV_HANDLE                              heartbeatTimer;
 	APP_I2C_STATES		i2cStates;
     DRV_I2C_BUFFER_HANDLE                   I2CBufferHandle;
     DRV_I2C_BUFFER_EVENT                    I2CBufferEvent;
+    bool                                    alarmHasFired;
+    uint32_t    tmrPeriod;      // timer period register value
+    uint16_t    alarmCount;     // number of timer interrupts since last alarm
+    uint16_t    alarmCountMax;  // number of interrupts to count before alarm
 
 } APP_DATA;
 
