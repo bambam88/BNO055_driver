@@ -111,6 +111,14 @@ uint16_t writeStringLen = 0;
 #define APP_ALARM_PERIOD_IN_MS  167
 
 
+void _mon_putc (char c)
+ {
+   while (U2STAbits.UTXBF); //Wait till transmission is complete
+   U2TXREG = c;
+ }
+
+
+
 
 // *****************************************************************************
 // *****************************************************************************
@@ -446,6 +454,10 @@ communication routine*/
             }  
 #endif
             appData.alarmHasFired = false;
+            
+            U2MODEbits.UARTEN = 0x01; //Enable UART module
+   U2STAbits.UTXEN = 0x01;// Enable UART transmission
+   printf ("Hello World!\r\n");
             
 
             

@@ -88,6 +88,25 @@ void __ISR(_I2C_4_VECTOR, ipl1AUTO) _IntHandlerDrvI2CInstance0(void)
 
 
 
+ void __ISR(_UART_2_VECTOR, ipl1AUTO) _IntHandlerDrvUsartInstance0(void)
+{
+    DRV_USART_TasksTransmit(sysObj.drvUsart0);
+    DRV_USART_TasksError(sysObj.drvUsart0);
+    DRV_USART_TasksReceive(sysObj.drvUsart0);
+}
+ 
+ 
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
  
  
 
