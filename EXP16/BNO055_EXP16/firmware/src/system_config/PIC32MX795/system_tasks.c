@@ -76,11 +76,15 @@ void SYS_Tasks ( void )
     SYS_TMR_Tasks(sysObj.sysTmr);
 
     /* Maintain Device Drivers */
+    DRV_USART_TasksTransmit(sysObj.drvUsart0);
+    DRV_USART_TasksError (sysObj.drvUsart0);
+    DRV_USART_TasksReceive(sysObj.drvUsart0);
 
     /* Maintain Middleware & Other Libraries */
 
     /* Maintain the application's state machine. */
     APP_Tasks();
+    UART_Tasks();
 }
 
 

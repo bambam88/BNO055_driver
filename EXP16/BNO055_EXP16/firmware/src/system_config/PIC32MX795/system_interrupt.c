@@ -61,6 +61,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 
 #include "system/common/sys_common.h"
 #include "app.h"
+#include "uart.h"
 #include "system_definitions.h"
 
 // *****************************************************************************
@@ -88,26 +89,7 @@ void __ISR(_I2C_4_VECTOR, ipl1AUTO) _IntHandlerDrvI2CInstance0(void)
 
 
 
- void __ISR(_UART_2_VECTOR, ipl1AUTO) _IntHandlerDrvUsartInstance0(void)
-{
-    DRV_USART_TasksTransmit(sysObj.drvUsart0);
-    DRV_USART_TasksError(sysObj.drvUsart0);
-    DRV_USART_TasksReceive(sysObj.drvUsart0);
-}
- 
- 
- 
-
- 
-
- 
-
- 
-
- 
-
- 
- 
+  
  
 
 void __ISR(_TIMER_1_VECTOR, ipl1AUTO) IntHandlerDrvTmrInstance0(void)

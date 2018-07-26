@@ -110,12 +110,10 @@ uint16_t writeStringLen = 0;
 #define APP_HEARTBEAT_TMR_PERIOD PRINT_PERIOD
 #define APP_ALARM_PERIOD_IN_MS  167
 
-
-void _mon_putc (char c)
- {
-   while (U2STAbits.UTXBF); //Wait till transmission is complete
-   U2TXREG = c;
- }
+void _mon_putc(char c) {
+    while (U2STAbits.UTXBF); //Wait till transmission is complete
+    U2TXREG = c;
+}
 
 
 
@@ -375,32 +373,29 @@ uint8_t gyro_calib_status;
 uint8_t mag_calib_status;
 uint8_t sys_calib_status;
 
-void APP_TimerAlarmSetup ( void )
-{
+void APP_TimerAlarmSetup(void) {
     uint32_t tmrFreq, countsPerAlarmPeriod, timerPeriod;
     uint16_t countMax;
- 
+
     tmrFreq = DRV_TMR_CounterFrequencyGet(appData.heartbeatTimer); // timer increment rate
- 
+
     // number of timer counts needed for 1 alarm period
     // alarm period = timer increment rate * # of seconds per alarm period
     countsPerAlarmPeriod = tmrFreq * APP_ALARM_PERIOD_IN_MS / 1000;
- 
+
     // number of timer interrupts needed per alarm period (16-bit timer)
-    countMax = (countsPerAlarmPeriod/65536) + 1;            // +1 to round up
- 
-    timerPeriod = countsPerAlarmPeriod / countMax;          // timer period value
- 
+    countMax = (countsPerAlarmPeriod / 65536) + 1; // +1 to round up
+
+    timerPeriod = countsPerAlarmPeriod / countMax; // timer period value
+
     appData.tmrPeriod = timerPeriod;
     appData.alarmCountMax = countMax;
 }
 
+void APP_TimerCallback(uintptr_t context, uint32_t alarmCount) {
 
-void APP_TimerCallback ( uintptr_t context, uint32_t alarmCount ) {
-
-    appData.alarmHasFired = true; 
+    appData.alarmHasFired = true;
 }
-
 
 static void APP_I2C_Task(void) {
     /* Variable used to return value of
@@ -436,31 +431,25 @@ communication routine*/
             comres += bno055_set_operation_mode(BNO055_OPERATION_MODE_NDOF);
 #endif
             /************************* END READ RAW FUSION DATA  ************/
-              // Configure alarm (fireoff at a rate of 1/6 hz)   
+            // Configure alarm (fireoff at a rate of 1/6 hz)   
 #if 1            
-            appData.heartbeatTimer = SYS_TMR_CallbackPeriodic (10, 0, &APP_TimerCallback);
+            appData.heartbeatTimer = SYS_TMR_CallbackPeriodic(167, 0, &APP_TimerCallback);
 #else       
-            appData.heartbeatTimer = DRV_TMR_Open ( DRV_TMR_INDEX_0,
-                                                  DRV_IO_INTENT_EXCLUSIVE );
-            if ( DRV_HANDLE_INVALID != appData.heartbeatTimer )  // Timer Driver opened?
+            appData.heartbeatTimer = DRV_TMR_Open(DRV_TMR_INDEX_0,
+                    DRV_IO_INTENT_EXCLUSIVE);
+            if (DRV_HANDLE_INVALID != appData.heartbeatTimer) // Timer Driver opened?
             {
                 APP_TimerAlarmSetup();
-                DRV_TMR_AlarmRegister ( appData.heartbeatTimer,
-                                        appData.tmrPeriod,
-                                        true,
-                                        0,
-                                        APP_TimerCallback );
-                DRV_TMR_Start(appData.heartbeatTimer);     // Start the timer
-            }  
+                DRV_TMR_AlarmRegister(appData.heartbeatTimer,
+                        appData.tmrPeriod,
+                        true,
+                        0,
+                        APP_TimerCallback);
+                DRV_TMR_Start(appData.heartbeatTimer); // Start the timer
+            }
 #endif
             appData.alarmHasFired = false;
-            
-            U2MODEbits.UARTEN = 0x01; //Enable UART module
-   U2STAbits.UTXEN = 0x01;// Enable UART transmission
-   printf ("Hello World!\r\n");
-            
 
-            
 
             break;
         }
@@ -498,7 +487,7 @@ communication routine*/
             comres += bno055_read_gravity_xyz(&gravity_xyz);
 #endif            
             appData.i2cStates = APP_I2C_DONE;
-            Nop();
+            printf("Now Reading EURLER\r\n");
 
             break;
         }
@@ -515,21 +504,18 @@ communication routine*/
             bno055_get_sys_calib_stat(&sys_calib_status);
 #endif            
             appData.i2cStates = APP_I2C_DONE;
+            printf("Now Reading CALIBRATION STATUS\r\n");
 
             break;
 
         case APP_I2C_DONE:
         {
-            if (appData.alarmHasFired)
-            {
+            if (appData.alarmHasFired) {
                 appData.alarmHasFired = false;
-                if (((tickCounter++)%6) == 0 )
-                {
+                if (((tickCounter++) % 6) == 0) {
                     // every second get the calibration flags
                     appData.i2cStates = APP_I2C_READ_CALIBRATION_STATUS;
-                }
-                else
-                {
+                } else {
                     /// other wise read the the euler angles
                     appData.i2cStates = APP_I2C_READ_EULER_ANGLES;
                 }
@@ -572,9 +558,9 @@ void APP_Initialize(void) {
     appData.state = APP_STATE_INIT;
 
     appData.handleI2C0 = DRV_HANDLE_INVALID;
-    
-     appData.heartbeatTimer = DRV_HANDLE_INVALID;   // don't use until initialized
-    appData.alarmCount = 0;  
+
+    appData.heartbeatTimer = DRV_HANDLE_INVALID; // don't use until initialized
+    appData.alarmCount = 0;
 
     /* TODO: Initialize your application's state machine and other
      * parameters.
@@ -621,12 +607,12 @@ void APP_Tasks(void) {
                 bno055.bus_read = BNO055_I2C_bus_read;
                 bno055.delay_msec = wait_ms;
                 bno055.dev_addr = appSlaveAddress;
-                
-             
+
+
                 bno055_init(&bno055);
 
             }
-            
+
 #endif
             if (appInitialized) {
                 I2C_Setup();

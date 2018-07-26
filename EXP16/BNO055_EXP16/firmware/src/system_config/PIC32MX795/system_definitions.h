@@ -63,6 +63,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include "driver/usart/drv_usart_static.h"
 #include "system/ports/sys_ports.h"
 #include "app.h"
+#include "uart.h"
 
 
 // DOM-IGNORE-BEGIN

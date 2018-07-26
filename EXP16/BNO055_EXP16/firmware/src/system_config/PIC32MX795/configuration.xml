@@ -5,7 +5,7 @@
     <SystemStartScript dnOrder="1"/>
   </DisplayManager>
   <General>
-    <HarmonyPath dnOrder="0" path="../../../../../Users/juan.y/microchip/harmony/v2_06"/>
+    <HarmonyPath dnOrder="0" path="../../../../microchip/harmony/v2_06"/>
     <Processor dnOrder="1" name="PIC32MX795F512L"/>
     <Board dnOrder="2" name=" "/>
     <ForceOptimization dnOrder="3" flag="true"/>
@@ -182,7 +182,7 @@
       <Template dnOrder="0">
         <Name dnOrder="0">system_config.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/app/system_config/PIC32MX795</Path>
-        <Checksum dnOrder="2">4A393183A667AC2604C761D0A408827B</Checksum>
+        <Checksum dnOrder="2">5194B7F5D1297F501896E35A97ED8443</Checksum>
       </Template>
       <Template dnOrder="1">
         <Name dnOrder="0">drv_i2c_static_buffer_model.c</Name>
@@ -200,125 +200,135 @@
         <Checksum dnOrder="2">E1044098D8EA50DFF2E94B5E060B5160</Checksum>
       </Template>
       <Template dnOrder="4">
+        <Name dnOrder="0">UART.h</Name>
+        <Path dnOrder="1">Header&amp;#160;Files/app</Path>
+        <Checksum dnOrder="2">94215B66515143097933DE2F2628137A</Checksum>
+      </Template>
+      <Template dnOrder="5">
         <Name dnOrder="0">sys_clk_pic32mx.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/PIC32MX795/framework/system/clk/src</Path>
         <Checksum dnOrder="2">FDF6C8068CFFAEEC5F8537A8D6514230</Checksum>
       </Template>
-      <Template dnOrder="5">
+      <Template dnOrder="6">
         <Name dnOrder="0">sys_devcon_pic32mx.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/PIC32MX795/framework/system/devcon/src</Path>
         <Checksum dnOrder="2">5141464248E33ABE9E7D144A2D4DC129</Checksum>
       </Template>
-      <Template dnOrder="6">
+      <Template dnOrder="7">
         <Name dnOrder="0">system_definitions.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/app/system_config/PIC32MX795</Path>
-        <Checksum dnOrder="2">AB6F7066A6A307A7EC2A7DAA803193D8</Checksum>
+        <Checksum dnOrder="2">7B0492403DC5273AB30F06DD5E5CFC26</Checksum>
       </Template>
-      <Template dnOrder="7">
+      <Template dnOrder="8">
+        <Name dnOrder="0">UART.c</Name>
+        <Path dnOrder="1">Source&amp;#160;Files/app</Path>
+        <Checksum dnOrder="2">F99A10B9AB7D01D02E6C11FA0BA3D40E</Checksum>
+      </Template>
+      <Template dnOrder="9">
         <Name dnOrder="0">sys_devcon_local.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/app/system_config/PIC32MX795/framework/system/devcon/src</Path>
         <Checksum dnOrder="2">B66F9B4DBD85DA7F9DE775E864E01395</Checksum>
       </Template>
-      <Template dnOrder="8">
+      <Template dnOrder="10">
         <Name dnOrder="0">system_init.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/PIC32MX795</Path>
-        <Checksum dnOrder="2">775AFC4FC60BAA7C5578B1896E16D5D1</Checksum>
+        <Checksum dnOrder="2">1CF14F33DBA20D9EDB7AEF8F99528EA6</Checksum>
       </Template>
-      <Template dnOrder="9">
+      <Template dnOrder="11">
         <Name dnOrder="0">sys_ports_static.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/PIC32MX795/framework/system/ports/src</Path>
         <Checksum dnOrder="2">BC814B1E833F48A33953D65B71BC498D</Checksum>
       </Template>
-      <Template dnOrder="10">
+      <Template dnOrder="12">
         <Name dnOrder="0">system_interrupt.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/PIC32MX795</Path>
-        <Checksum dnOrder="2">A3BA29E442E1DD18CE7BE232BD76D93E</Checksum>
+        <Checksum dnOrder="2">85931E25C29F6F8C71ECF4C019234978</Checksum>
       </Template>
-      <Template dnOrder="11">
+      <Template dnOrder="13">
         <Name dnOrder="0">sys_devcon.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/app/system_config/PIC32MX795/framework/system/devcon</Path>
         <Checksum dnOrder="2">07580DCDEF89D9C79B062544109C5367</Checksum>
       </Template>
-      <Template dnOrder="12">
+      <Template dnOrder="14">
         <Name dnOrder="0">main.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app</Path>
         <Checksum dnOrder="2">81A51474D8A80D41AD749DEAE4C1A7A3</Checksum>
       </Template>
-      <Template dnOrder="13">
+      <Template dnOrder="15">
         <Name dnOrder="0">drv_usart_static.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/PIC32MX795/framework/driver/usart/src</Path>
-        <Checksum dnOrder="2">B38DC0BB6B73C52734F8FCCB848DDE29</Checksum>
+        <Checksum dnOrder="2">B4A9307348EA0CBD6EB788B65B5BC66D</Checksum>
       </Template>
-      <Template dnOrder="14">
+      <Template dnOrder="16">
         <Name dnOrder="0">drv_usart_static_local.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/app/system_config/PIC32MX795/framework/driver/usart/src</Path>
         <Checksum dnOrder="2">9563F23392942CF4B5C01E1065907D06</Checksum>
       </Template>
-      <Template dnOrder="15">
+      <Template dnOrder="17">
         <Name dnOrder="0">bsp.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/app/system_config/PIC32MX795/bsp</Path>
         <Checksum dnOrder="2">7567B3DF8AD82B4BA40BB70A80E7AC51</Checksum>
       </Template>
-      <Template dnOrder="16">
+      <Template dnOrder="18">
         <Name dnOrder="0">system_exceptions.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/PIC32MX795</Path>
         <Checksum dnOrder="2">9836A04F3E98D3971DB91DF539160F34</Checksum>
       </Template>
-      <Template dnOrder="17">
+      <Template dnOrder="19">
         <Name dnOrder="0">drv_usart_static_byte_model.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/PIC32MX795/framework/driver/usart/src</Path>
-        <Checksum dnOrder="2">F91C429976AC25EB8B3639F0B0356E3B</Checksum>
+        <Checksum dnOrder="2">A167D9A4062973FF5BEB2AB6B0AADFDD</Checksum>
       </Template>
-      <Template dnOrder="18">
+      <Template dnOrder="20">
         <Name dnOrder="0">drv_i2c_static_buffer_model.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/app/system_config/PIC32MX795/framework/driver/i2c</Path>
         <Checksum dnOrder="2">960C81364707EBD7F58A98E66A4B2745</Checksum>
       </Template>
-      <Template dnOrder="19">
+      <Template dnOrder="21">
         <Name dnOrder="0">app.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app</Path>
         <Checksum dnOrder="2">E95E0002611D0B416789C5069E1D18D6</Checksum>
-        <ProjectFileChecksum dnOrder="3">BFFB2574B094756AAF958662A7C4B64B</ProjectFileChecksum>
+        <ProjectFileChecksum dnOrder="3">A6850FA2F6F306E98569BA4F45FA6421</ProjectFileChecksum>
       </Template>
-      <Template dnOrder="20">
+      <Template dnOrder="22">
         <Name dnOrder="0">bsp.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/PIC32MX795/bsp</Path>
         <Checksum dnOrder="2">8B47CF905B347CA696FDE39F0320241C</Checksum>
       </Template>
-      <Template dnOrder="21">
+      <Template dnOrder="23">
         <Name dnOrder="0">drv_usart_static.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/app/system_config/PIC32MX795/framework/driver/usart</Path>
         <Checksum dnOrder="2">5CECAF42B01CE886D52A8868E39E7772</Checksum>
       </Template>
-      <Template dnOrder="22">
+      <Template dnOrder="24">
         <Name dnOrder="0">drv_usart_mapping.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/PIC32MX795/framework/driver/usart/src</Path>
-        <Checksum dnOrder="2">84D12D754B67B6F268A7243A5A473239</Checksum>
+        <Checksum dnOrder="2">9CD3E662EEA539EA00ABC2635EFAB393</Checksum>
       </Template>
-      <Template dnOrder="23">
+      <Template dnOrder="25">
         <Name dnOrder="0">system_tasks.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/PIC32MX795</Path>
-        <Checksum dnOrder="2">AE7AA289EEE21D9BCDFF0D1B5229A64E</Checksum>
+        <Checksum dnOrder="2">88DB73C453746860B682C5547AF71F21</Checksum>
       </Template>
-      <Template dnOrder="24">
+      <Template dnOrder="26">
         <Name dnOrder="0">app.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/app</Path>
         <Checksum dnOrder="2">92603BDD404D503525C710147E5C3933</Checksum>
-        <ProjectFileChecksum dnOrder="3">7C2E545A34DEAE75F9C3140AB5689845</ProjectFileChecksum>
+        <ProjectFileChecksum dnOrder="3">D0C584E4C69916AE71D864A7EEE0BD0B</ProjectFileChecksum>
       </Template>
     </Templates>
     <CompilerItems dnOrder="2">
       <C32 dnOrder="0">
-        <Include dnOrder="0" value="/Projects/GAV/BNO055_driver/EXP16/BNO055_EXP16/firmware/src"/>
-        <Include dnOrder="1" value="/Projects/GAV/BNO055_driver/EXP16/BNO055_EXP16/firmware/src/system_config/PIC32MX795"/>
-        <Include dnOrder="2" value="/Projects/GAV/BNO055_driver/EXP16/BNO055_EXP16/firmware/src/PIC32MX795"/>
-        <Include dnOrder="3" value="/Users/juan.y/microchip/harmony/v2_06/framework"/>
-        <Include dnOrder="4" value="/Projects/GAV/BNO055_driver/EXP16/BNO055_EXP16/firmware/src/system_config/PIC32MX795/framework"/>
+        <Include dnOrder="0" value="C:\Projects\BNO055_driver\EXP16\BNO055_EXP16\firmware\src"/>
+        <Include dnOrder="1" value="C:\Projects\BNO055_driver\EXP16\BNO055_EXP16\firmware\src\system_config\PIC32MX795"/>
+        <Include dnOrder="2" value="C:\Projects\BNO055_driver\EXP16\BNO055_EXP16\firmware\src\PIC32MX795"/>
+        <Include dnOrder="3" value="C:\microchip\harmony\v2_06\framework"/>
+        <Include dnOrder="4" value="C:\Projects\BNO055_driver\EXP16\BNO055_EXP16\firmware\src\system_config\PIC32MX795\framework"/>
         <Include dnOrder="5" value="../src/system_config/PIC32MX795/bsp"/>
       </C32>
     </CompilerItems>
     <Libraries dnOrder="3">
-      <Library dnOrder="0" value="../../../../../../../Users/juan.y/microchip/harmony/v2_06/bin/framework/peripheral/PIC32MX795F512L_peripherals.a"/>
+      <Library dnOrder="0" value="../../../../../../microchip/harmony/v2_06/bin/framework/peripheral/PIC32MX795F512L_peripherals.a"/>
     </Libraries>
   </Manifest>
 </Configuration>
